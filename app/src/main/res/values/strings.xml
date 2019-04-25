@@ -10,6 +10,7 @@
         <item>"15"</item>
         <item>"20"</item>
     </string-array>
+    <string name="title_activity_inicio">InicioActivity</string>
 </resources>
 
 

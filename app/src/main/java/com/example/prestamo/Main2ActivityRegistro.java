@@ -1,12 +1,12 @@
 package com.example.prestamo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,16 +14,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
+import static com.example.prestamo.Datos.*;
 
 
 public class Main2ActivityRegistro extends AppCompatActivity {
-
+    private Spinner spcliente;
+    private String recibido=null;
+    private  ArrayAdapter<String> adapter;
 
         //declaraciones
+    Spinner  rcliente;
         Spinner interes;
         EditText fecha ;
         EditText fechafin ;
@@ -38,6 +45,7 @@ public class Main2ActivityRegistro extends AppCompatActivity {
     int p = 1;
     int m = 0;
     int in;
+    public List<String> temp = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,14 +59,52 @@ public class Main2ActivityRegistro extends AppCompatActivity {
         cuota = findViewById(R.id.cuota);
         interes = findViewById(R.id.interes);
         plazo = findViewById(R.id.plazo);
+        rcliente = findViewById(R.id.spcliente);
 
-        Button btn = findViewById(R.id.fin);
+        for ( int j = 0;j <Datos.clientes.size();j++){
+            String b = Datos.clientes.get(j).getNombre();
+            String o = b + " " + Datos.clientes.get(j).getApellido();
+            temp.add(o);
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,temp);
+            //Asignar Adaptador
+            rcliente.setAdapter(adapter);
+        }
+
+        Button btn = findViewById(R.id.btnguardar);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(),"Gracias",Toast.LENGTH_SHORT).show();
+
+
+                Prestamo m = new Prestamo();
+
+              m.setFechainicio(fecha.getText().toString());
+              m.setFechafin(fechafin.getText().toString());
+              m.setNombre(rcliente.getSelectedItem().toString());
+              m.setMonto(monto.getText().toString());
+              m.setInteres(interes.getSelectedItem().toString());
+              m.setCuota(cuota.getText().toString());
+              m.setPlazo(plazo.getText().toString().toString());
+              m.setPaga(paga.getText().toString());
+
+
+                Datos.prestamos.add(m);
+                Intent intent = new Intent();
+               // intent.putExtra("valor",nombre.getText().toString());
+                setResult(RESULT_OK,intent);
+                finish();
+
             }
         });
+
+        //creamos un condicion para saber si se guardo un registro
+//
+//               adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,Datos.clientes);
+//               spcliente.setAdapter(adapter);
+
+
+
+
 
 
         //usamos la propiedad formatter para poder asiggnar el formato de la fecha el cual recibe un objeto tipo date
@@ -167,6 +213,14 @@ public class Main2ActivityRegistro extends AppCompatActivity {
         Date datees = calo.getTime();
         String dto = formatter.format(datees);
         fechafin.setText(dto);
+
+
+    }
+
+    public void onClick2(View view) {
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED,intent);
+        finish();
 
 
     }

@@ -6,107 +6,87 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    EditText nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        Button continuar = findViewById(R.id.button);
+        Button continuar = findViewById(R.id.btncontinuar);
         continuar.setOnClickListener(new View.OnClickListener() {
 
 
 
 
             public void onClick(View v ) {
-                EditText nombre = findViewById(R.id.nombre);
+                nombre = findViewById(R.id.nombre);
+                Spinner sexo = findViewById(R.id.spinner);
+                EditText  apellido = findViewById(R.id.apellido);
                 EditText cedula = findViewById(R.id.cedula);
                 EditText telefono = findViewById(R.id.telefono);
                 EditText direccion = findViewById(R.id.direccion);
+                EditText ocupacion = findViewById(R.id.ocupacion);
 
 
-//                    switch (v.getId())
-//                    {
-//                        case R.id.nombre:
-//
-//                            if(nombre.getText().toString().isEmpty()) {
-//                                nombre.setError("Debe ser llenado el campo");}
-//                        case R.id.cedula:
-//                           if(cedula.getText().toString().isEmpty()){
-//                              cedula.setError("Debe ser llenado el campo");}
-//                              break;
-//
-//                         case R.id.telefono:
-//                             if(telefono.getText().toString().isEmpty()){
-//                                telefono.setError("Debe ser llenado el campo");
-//                            }
-//                            break;
-//                        case R.id.direccion:
-//                            if(direccion.getText().toString().isEmpty()) {
-//                                direccion.setError("Debe ser llenado el campo");
-//                                break;
-//
-//
-//                            }
-//                            default:
-//                                while()
-//                                }
-//                                Intent intent = new Intent( getApplicationContext(), Main2ActivityRegistro.class);
-//                                startActivity(intent);
-//                                break;}
-////
-//
-//
-//                }
-////
+
+
                 if (!nombre.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty() && !cedula.getText().toString().isEmpty() && !direccion.getText().toString().isEmpty()) {
 
-                    Intent intent = new Intent(getApplicationContext(), Main2ActivityRegistro.class);
-                    startActivity(intent);
-                } else {
-                    if(nombre.getText().toString().isEmpty()) {
-                                nombre.setError("Debe ser llenado el campo");}
-                                else
-                                    if(telefono.getText().toString().isEmpty()){
-                                telefono.setError("Debe ser llenado el campo");}
-
-                                else  if(cedula.getText().toString().isEmpty()) {
-                                    cedula.setError("Debe ser llenado el campo");
-                                }
-                                else if(direccion.getText().toString().isEmpty()){
-                                                direccion.setError("Debe ser llenado el campo");
-                                            }
-
-//                    nombre.setError("Debe ser llenado el campo");
-//                    cedula.setError("Debe ser llenado el campo");
-//                    telefono.setError("Debe ser llenado el campo");
-//                    direccion.setError("Debe ser llenado el campo");
-                }
-
-//                if(!cedula.getText().toString().isEmpty()){
-//                    cedula.setError("Debe ser llenado el campo");
-//                }
-//                if(!telefono.getText().toString().isEmpty()){
-//                    telefono.setError("Debe ser llenado el campo");
-//                }
-//                if(!direccion.getText().toString().isEmpty()){
-//                    direccion.setError("Debe ser llenado el campo");
-//                }
-//                if (v.getId()==R.id.button)
-//                {
-//                    Intent intent = new Intent( getApplicationContext(), Main2ActivityRegistro.class);
+//                    Intent intent = new Intent(getApplicationContext(), Main2ActivityRegistro.class);
 //                    startActivity(intent);
+
+                    Cliente n = new Cliente();
+
+                    n.setNombre(nombre.getText().toString());
+                    n.setApellido(apellido.getText().toString());
+                    n.setCedula(cedula.getText().toString());
+                    n.setDireccion(direccion.getText().toString());
+                    n.setOcupacion(ocupacion.getText().toString());
+                    n.setSexo(sexo.getSelectedItem().toString());
+                    n.setTelefono(telefono.getText().toString());
+
+                     Datos.clientes.add(n);
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                } else {
+                    if (nombre.getText().toString().isEmpty()) {
+                        nombre.setError("Debe ser llenado el campo");
+                    } else if (telefono.getText().toString().isEmpty()) {
+                        telefono.setError("Debe ser llenado el campo");
+                    } else if (cedula.getText().toString().isEmpty()) {
+                        cedula.setError("Debe ser llenado el campo");
+                    } else if (direccion.getText().toString().isEmpty()) {
+                        direccion.setError("Debe ser llenado el campo");
+                    }
+
+                }
+            };
+        });}
+
+//    public void onClick(View view) {
 //
-////                }
+//
+//
+//
+//
+//    }
 
-
-            }
-                });
-            }
+    public void onClick2(View view) {
+        Intent intent = new Intent();
+        if(view.getId()== R.id.cancelar) {
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
+
+    }
+}
 
 
