@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick2(View view) {
         Intent intent = new Intent();
-        if(view.getId()== R.id.cancelar) {
+        if(view.getId()== R.id.cancelar)
             setResult(RESULT_CANCELED, intent);
-            finish();
-        }
+        finish();
+
 
     }
 }

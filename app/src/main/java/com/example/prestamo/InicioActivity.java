@@ -10,14 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class InicioActivity extends AppCompatActivity {
-   public TextView historial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-
-        historial  = findViewById(R.id.historial);
-
     }
     //
     public boolean onCreateOptionsMenu(Menu inicio) {
@@ -60,13 +57,14 @@ public class InicioActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        TextView historial=findViewById(R.id.historial);
         if (requestCode==4444)
         {
             if (resultCode== RESULT_CANCELED)
-                Toast.makeText(this, "Cancelo", Toast.LENGTH_SHORT).show();
-                //historial.append("Cancelo Ingreso de Nuevo cliente");
+                historial.append("\nCancelo Ingreso de Nuevo cliente");
+
             else
-                historial.append("Cancelo Ingreso de Nuevo cliente");
+                historial.append("\n  Ingreso de Nuevo cliente" );
 
         }
         super.onActivityResult(requestCode, resultCode, data);
