@@ -47,6 +47,7 @@ public class InicioActivity extends AppCompatActivity {
             case R.id.mnprestamo:
                 Intent intent3 = new Intent(InicioActivity.this,PrestamoActivity.class);
                 startActivity(intent3);
+                break;
             case R.id.acerca:
                 Toast.makeText(this, "Electiva Android", Toast.LENGTH_SHORT).show();
                 break;
@@ -75,7 +76,7 @@ public class InicioActivity extends AppCompatActivity {
 
 
         }
-        else
+        else if (requestCode==4434)
         {
             if (resultCode== RESULT_CANCELED)
             {

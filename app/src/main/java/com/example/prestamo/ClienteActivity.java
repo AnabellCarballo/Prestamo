@@ -61,7 +61,7 @@ public class ClienteActivity extends AppCompatActivity {
             startActivity(intent1);
         } else if (view.getId() == R.id.btnsig) {
                 if (i == Datos.clientes.size() - 1)
-                    Toast.makeText(this, "Es5e es el ultimo registro", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Este es el ultimo registro", Toast.LENGTH_SHORT).show();
                 else
                 {
                     i= i +1;
@@ -72,7 +72,7 @@ public class ClienteActivity extends AppCompatActivity {
             else
                 {
                     if (i == temp )
-                        Toast.makeText(this, "Es5e es el primer registro", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Este es el primer registro", Toast.LENGTH_SHORT).show();
                     else
                     {
                         i= i -1;

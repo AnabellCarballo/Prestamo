@@ -11,7 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PrestamoActivity extends AppCompatActivity {
-    int i= 0, j= 0;
+    int i= 0;
+    int j= 0;
 
     TextView nombre;
     TextView monto;
@@ -33,7 +34,7 @@ public class PrestamoActivity extends AppCompatActivity {
         nombre = findViewById(R.id.cliente);
         monto = findViewById(R.id.monto);
         interes = findViewById(R.id.Inte);
-        plazo = findViewById(R.id.plazo);
+        plazo = findViewById(R.id.Plazo);
         fechai = findViewById(R.id.fechai);
         fechafin = findViewById(R.id.fechafin);
         paga = findViewById(R.id.paga);
@@ -58,7 +59,7 @@ public class PrestamoActivity extends AppCompatActivity {
 
        if (view.getId() == R.id.btnsig) {
             if (i == Datos.prestamos.size() - 1)
-                Toast.makeText(this, "Es5e es el ultimo registro", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Este es el ultimo registro", Toast.LENGTH_SHORT).show();
             else
             {
                 i= i +1;
@@ -66,10 +67,10 @@ public class PrestamoActivity extends AppCompatActivity {
             }
 
         }
-        else if (view.getId()== R.id.btnatras)
+        else
         {
             if (i == j)
-                Toast.makeText(this, "Es5e es el primer registro", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Este es el primer registro", Toast.LENGTH_SHORT).show();
             else
             {
                 i= i -1;
