@@ -14,6 +14,13 @@ import java.util.List;
 
 public class ClienteActivity extends AppCompatActivity {
 
+    public  TextView nombre ;
+    public  TextView apellido ;
+    public TextView telefono ;
+    public  TextView cedula ;
+    public  TextView direccion ;
+    public  TextView ocupacion;
+    public  TextView sexo ;
    public  int i=0;
    public int temp=0;
 
@@ -22,19 +29,18 @@ public class ClienteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
 
+        nombre = findViewById(R.id.nombre);
+        apellido = findViewById(R.id.apellido);
+        telefono =findViewById(R.id.telefono);
+        cedula = findViewById(R.id.cedula);
+        direccion = findViewById(R.id.direccion);
+        ocupacion =  findViewById(R.id.ocupacion);
+        sexo  = findViewById(R.id.sexo);
+
         mostrar();
 
     }
     public  void mostrar (){
-
-         TextView nombre = findViewById(R.id.nombre);
-         TextView apellido = findViewById(R.id.apellido);
-        TextView telefono =findViewById(R.id.telefono);
-         TextView cedula = findViewById(R.id.cedula);
-        TextView direccion = findViewById(R.id.direccion);
-        TextView ocupacion =  findViewById(R.id.ocupacion);
-        TextView sexo  = findViewById(R.id.sexo);
-
 
         nombre.setText(Datos.clientes.get(i).getNombre());
         apellido.setText(Datos.clientes.get(i).getApellido());
