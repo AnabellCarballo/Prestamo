@@ -29,6 +29,8 @@ public class ClienteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
 
+
+
         nombre = findViewById(R.id.nombre);
         apellido = findViewById(R.id.apellido);
         telefono =findViewById(R.id.telefono);
