@@ -32,7 +32,7 @@ public class ClienteActivity extends AppCompatActivity {
 
 
         nombre = findViewById(R.id.nombre);
-        apellido = findViewById(R.id.apellido);
+        apellido = findViewById(R.id.apellidoc);
         telefono =findViewById(R.id.telefono);
         cedula = findViewById(R.id.cedula);
         direccion = findViewById(R.id.direccion);
@@ -69,7 +69,7 @@ public class ClienteActivity extends AppCompatActivity {
                 }
 
             }
-            else if (view.getId()== R.id.btnatras)
+            else
                 {
                     if (i == temp )
                         Toast.makeText(this, "Es5e es el primer registro", Toast.LENGTH_SHORT).show();

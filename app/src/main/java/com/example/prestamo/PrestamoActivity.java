@@ -39,12 +39,7 @@ public class PrestamoActivity extends AppCompatActivity {
         paga = findViewById(R.id.paga);
         cuota = findViewById(R.id.cuota);
 
-
-
         mostrar();
-
-
-
     }
 
     public void mostrar()
