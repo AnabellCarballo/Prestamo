@@ -58,13 +58,37 @@ public class InicioActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         TextView historial=findViewById(R.id.historial);
+        String h;
         if (requestCode==4444)
         {
-            if (resultCode== RESULT_CANCELED)
-                historial.append("\nCancelo Ingreso de Nuevo cliente");
-
+            if (resultCode== RESULT_CANCELED) {
+                h = data.getExtras().getString("valor2");
+                historial.append("\n");
+                historial.append(h);
+            }
             else
-                historial.append("\n  Ingreso de Nuevo cliente" );
+            {
+                h = data.getExtras().getString("valor");
+                historial.append("\n");
+                historial.append(h);
+            }
+
+
+        }
+        else
+        {
+            if (resultCode== RESULT_CANCELED)
+            {
+                h = data.getExtras().getString("valor2");
+                historial.append("\n");
+                historial.append(h);
+            }
+
+            else {
+                h = data.getExtras().getString("valor");
+                historial.append("\n");
+                historial.append(h);
+            }
 
         }
         super.onActivityResult(requestCode, resultCode, data);

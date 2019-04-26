@@ -52,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
                     n.setTelefono(telefono.getText().toString());
 
                      Datos.clientes.add(n);
-                    Intent intent = new Intent();
+                    Intent intent = getIntent();
+                    String h = nombre.getText().toString();
+                    intent.putExtra("valor", "Ingreso de nuevo cliente " + h);
+
                     setResult(RESULT_OK,intent);
                     finish();
 
@@ -71,18 +74,13 @@ public class MainActivity extends AppCompatActivity {
             };
         });}
 
-//    public void onClick(View view) {
-//
-//
-//
-//
-//
-//    }
+
 
     public void onClick2(View view) {
-        Intent intent = new Intent();
-        if(view.getId()== R.id.cancelar)
-            setResult(RESULT_CANCELED, intent);
+        Intent intent = getIntent();
+        intent.putExtra("valor2", "Cancelo ingreso nuevo cliente");
+        setResult(RESULT_CANCELED, intent);
+
         finish();
 
 

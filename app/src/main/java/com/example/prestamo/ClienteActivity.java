@@ -20,9 +20,9 @@ public class ClienteActivity extends AppCompatActivity {
     public  TextView cedula ;
     public  TextView direccion ;
     public  TextView ocupacion;
-    public  TextView sexo ;
-   public  int i=0;
-   public int temp=0;
+    public  TextView sexo;
+
+   int i=0,temp=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +57,8 @@ public class ClienteActivity extends AppCompatActivity {
             Intent intent1 = new Intent(ClienteActivity.this, Main2ActivityRegistro.class);
             //intent1.putExtra("res",nombre.getText().toString());
             startActivity(intent1);
-        } else
-            if (view.getId() == R.id.btnsig) {
-                if (i < Datos.clientes.size()-1)
+        } else if (view.getId() == R.id.btnsig) {
+                if (i == Datos.clientes.size() - 1)
                     Toast.makeText(this, "Es5e es el ultimo registro", Toast.LENGTH_SHORT).show();
                 else
                 {
@@ -68,8 +67,7 @@ public class ClienteActivity extends AppCompatActivity {
                 }
 
             }
-            else
-                if (view.getId()== R.id.btnatras)
+            else if (view.getId()== R.id.btnatras)
                 {
                     if (i == temp )
                         Toast.makeText(this, "Es5e es el primer registro", Toast.LENGTH_SHORT).show();

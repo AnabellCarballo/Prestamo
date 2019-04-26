@@ -89,22 +89,15 @@ public class Main2ActivityRegistro extends AppCompatActivity {
 
 
                 Datos.prestamos.add(m);
-                Intent intent = new Intent();
-               // intent.putExtra("valor",nombre.getText().toString());
+                Intent intent = getIntent();
+                intent.putExtra("valor", "Ingreso de nuevo Prestamo");
                 setResult(RESULT_OK,intent);
                 finish();
 
+
+
             }
         });
-
-        //creamos un condicion para saber si se guardo un registro
-//
-//               adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,Datos.clientes);
-//               spcliente.setAdapter(adapter);
-
-
-
-
 
 
         //usamos la propiedad formatter para poder asiggnar el formato de la fecha el cual recibe un objeto tipo date
@@ -217,9 +210,13 @@ public class Main2ActivityRegistro extends AppCompatActivity {
 
     }
 
+
+
     public void onClick2(View view) {
-        Intent intent = new Intent();
-        setResult(RESULT_CANCELED,intent);
+
+        Intent intent = getIntent();
+        intent.putExtra("valor2", "Cancelo ingreso nuevo Prestamo");
+            setResult(RESULT_CANCELED, intent);
         finish();
 
 
