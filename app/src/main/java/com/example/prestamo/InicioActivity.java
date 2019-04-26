@@ -1,16 +1,20 @@
 package com.example.prestamo;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class InicioActivity extends AppCompatActivity {
-
+     public  TextView historial;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +28,6 @@ public class InicioActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
 
         switch (item.getItemId())
         {
@@ -58,7 +60,8 @@ public class InicioActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        TextView historial=findViewById(R.id.historial);
+        historial=findViewById(R.id.historial);
+        registerForContextMenu(historial);
         String h;
         if (requestCode==4444)
         {
@@ -93,5 +96,33 @@ public class InicioActivity extends AppCompatActivity {
 
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.contextmenu, menu);
+
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.copiar:
+                String text = historial.getText().toString();
+                ClipboardManager myClipboard;
+                myClipboard = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText( " ",text);
+
+
+                myClipboard.setPrimaryClip(clipData);
+                break;
+            case R.id.borrar:
+                historial.setText(" ");
+
+        }
+        return super.onContextItemSelected(item);
     }
 }

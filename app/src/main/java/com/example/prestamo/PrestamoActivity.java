@@ -23,11 +23,13 @@ public class PrestamoActivity extends AppCompatActivity {
     TextView paga;
     TextView cuota;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prestamo);
-
+//        ActionBar bar=getSupportActionBar();
+//        bar.setSubtitle("Ingresar Credito");
 
 
 
